@@ -69,4 +69,17 @@ document.getElementById('miEnlace').addEventListener('click', function(event){
   function cerrarCajaDeLuz() {
     document.getElementById('miCajaDeLuz').style.display = 'none';
   }
-  
+
+// playaudio.js
+function playAudioOnInteraction() {
+    var audio = document.getElementById('miAudio');
+    audio.play().catch(function(error) {
+        console.error("La reproducción de audio falló:", error);
+    });
+    document.removeEventListener('click', playAudioOnInteraction);
+    document.removeEventListener('touchstart', playAudioOnInteraction);
+}
+
+document.addEventListener('click', playAudioOnInteraction);
+document.addEventListener('touchstart', playAudioOnInteraction);
+
