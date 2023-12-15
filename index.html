@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Navidad Maria!</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <article>
+    <div class="envelope-container">
+      <div class="message message-1" id="message-1">
+        <h1>Feliz Navidad 🎅</h1>
+        <p>Puedes regular el volumen de la canción 👇. ¡Ah, y tienes una carta 🥳!</p>
+      </div>
+      <button class="glow-on-hover" type="button" onclick="window.location.href='./flores.html';">Flores 🌸</button>
+      <button class="heart-btn" id="heart-btn" onclick="toggleEnvelope()">&#10084;
+        <span class="heart-btn-text">Abrir</span>
+      </button>
+      <div class="envelope-flap">
+        <svg class="inner">
+          <polygon class="inner-polygon" id="inner-polygon" points="5,0 345,0 175,145" ></polygon>
+        </svg>
+        <svg class="outer" id="outer">
+          <polygon class="outer-polygon" points="5,150 345,150 175,0"></polygon>
+        </svg>
+      </div>
+      <div class="envelope-base"></div>
+
+      <!-- Contenedor de la caja de luz para la carta -->
+      <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+          <span class="close-lightbox" id="close-lightbox">&times;</span>
+          <h1>De Andrei 😊</h1>
+          <p>Antes que nada, quiero decir que el final del audio sobre las flores me representa al 100% 😂. Por cierto, ¿qué habrías enviado primero, la flor o la carta? Dicen que el orden de los factores no altera el producto, aunque mi profesor de matemáticas solía decirme: "No es lo mismo una pelota vieja que una vieja en pelotas". Vaya ejemplo que me daba ese hombre 🤦‍♂️!</p>
+
+          <p>Dicho esto, te voy a proponer una idea loca mía (Parte 4). ¿Te gustaría cenar algún día juntos? No me refiero a una videollamada, sino a una cena en persona en Bucaramanga (tampoco es tan difícil recordar el nombre, ¿verdad?). No te preocupes, ya me has dejado claro en varias ocasiones que no buscas una relación, así que no iría con intenciones de ser un Romeo, o al menos, estaría mentalizado de otra manera 😅😅.</p>
+      
+          <p>Sinceramente, antes de que empieces a viajar por Latinoamérica, me gustaría verte nuevamente en persona, sabiendo que probablemente no te vuelva a ver más (me ha pasado con gente que vive en España, imagínate con alguien que vive en Colombia!). Lo positivo es que, aunque parezca como la primera vez que nos vemos en persona, en realidad no lo sería, lo cual es un punto a favor. No me importaría coger un avión para ir allá, ya sea uno, dos, tres o incluso cuatro aviones, porque aunque vivieras en Marte, inventaría una nave para llegar hasta ti. De todas maneras, esta anécdota puede resultar divertida. Algún día podrás contar que alguien recorrió medio mundo solo para verte 😅.</p>
+      
+          <p>Creo que allí al Joker lo llamáis "el guasón", yo sería "el cartas"! Aunque, pensándolo bien, enviar una carta por TikTok... (🤫🤫 no tengo otro medio). Es una pena que no se me dé tan bien mantener conversaciones diarias a través de redes sociales y prefiera los textos más elaborados, aunque entiendo que vivimos en otros tiempos, ¡esto no son los años 90 😂!</p>
+      
+          <p>Por cierto, hay una frase de una película llamada "El Club de la Lucha" que me gusta mucho: "Trabajamos en trabajos de mierda para comprar cosas que no necesitamos y así impresionar a gente a la que le da igual nuestra vida". Eso es Instagram, debería haberlo eliminado antes, pero si lo hubiera hecho, no habría tenido forma de comunicarme contigo 😬. Dicho esto, te propongo estas tres plataformas como alternativa; puedes elegir la que quieras:</p>
+      
+          <ul>
+              <li>Whatsapp: 😍 +34 601 196 795</li>
+              <li>Telegram: 🤩 @andreidan97</li>
+              <li>Ninguna: 💀</li>
+          </ul>
+      
+          <p>Supongo que contestarás al mensaje, pero en caso de que no lo hagas, espero que hayas disfrutado leyendo esto y que te vaya todo muy bien 🍀.</p>
+      
+          <p>Se despide,</p>
+      
+          <p>Andrei.</p>
+      
+          <p>PD: El otro día me enviaron tu título oficial de inglés, creo que hubo una confusión. <a href="./Imagenes/diploma-first.jpg" id="miEnlace">Haz clic aquí.</a></p>
+          <!-- Agrega más contenido aquí si lo deseas -->
+          <div id="miCajaDeLuz" class="caja-de-luz">
+            <span class="cerrar" onclick="cerrarCajaDeLuz()">&times;</span>
+            <img class="contenido-caja-de-luz" id="imagenCajaDeLuz">
+          </div>          
+        </div>
+      </div>
+      <audio autoplay loop id="miAudio">
+        <source src="./Audios/navidad.MP3" type="audio/mpeg">
+      </audio>
+      <input type="range" id="controlVolumen" min="0" max="1" step="0.01" value="0.5">
+    </div>
+  </article>
+  <script src="./main.js"></script>
+</body>
+</html>

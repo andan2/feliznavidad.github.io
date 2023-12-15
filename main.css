@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+    /* Colores actualizados para un tema nevado */
+    --red-dk: #8B0000; /* Rojo más oscuro, como bayas en la nieve */
+    --red-md: #b32428; /* Rojo más claro, como luces navideñas */
+    --pink-dk: #FFC0CB; /* Rosa suave */
+    --pink-lt: #FFD1DC; /* Rosa muy claro */
+    --purple-dk: #800080; /* Púrpura oscuro, para contraste */
+    --purple-md: #DA70D6; /* Púrpura medio */
+  
+    --neutral-dk: #333; /* Mantener gris oscuro para contraste */
+    --neutral-md: #999; /* Gris medio */
+    --neutral-mdlt: #DDD; /* Gris claro */
+    --neutral-lt: #fff; /* Mantener blanco */
+  
+    /* Fuente */
+    --font-sans: "Poppins", sans-serif;
+    --font-display: "Lobster", sans-serif;
+  }
+
+/* MAIN STYLES */
+body {
+    background: linear-gradient(to bottom, #f0f8ff 0%, #ffffff 100%);
+    font-family: var(--font-sans);
+  }
+  
+p {
+  font-size: 20px;
+  margin: 20px 0;
+}
+h1, h2 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--red-dk);
+  text-shadow: 1px 2px 2px white;
+}
+button {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+/* this article is used to center the component within the viewport */
+article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* MESSAGES */
+.message {
+  text-align: center;
+  margin-top: 40px;
+}
+.message-2 {
+  display: none;
+}
+
+/* ENVELOPE */
+.envelope-container {
+  position: relative;
+  height: 450px;
+  width: 350px;
+}
+
+.envelope-base {
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+  border: 1px solid var(--neutral-md);
+  border-radius: 5px;
+  background: var(--neutral-lt);
+  box-shadow: 0px 10px 30px rgba(0,0,0,.3), 0px 8px 10px rgba(0,0,0,.3);
+  z-index: 1;
+}
+.envelope-flap {
+  position: absolute;
+  bottom: 50px;
+  height: 300px;
+  width: 100%;
+  z-index: 10;
+}
+.inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+}
+.inner-polygon {
+  fill: var(--neutral-lt); 
+  stroke: var(--neutral-md); 
+  stroke-width: 1;
+}
+.inner-open {
+  fill: var(--neutral-mdlt);
+}
+.outer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow: hidden;
+}
+.outer-polygon {
+  fill: var(--neutral-lt); 
+  stroke: var(--neutral-md); 
+  stroke-width: 1;
+}
+.outer-open {
+  opacity: 1;
+}
+
+/* BOTONES */
+  
+.glow-on-hover {
+    width: 100px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #000000;
+    background: #FF6347; /* Un rojo navideño más oscuro para el fondo */
+    cursor: pointer;
+    position: absolute; /* Posicionamiento absoluto respecto al sobre */
+    bottom: 15px; /* Ajusta esta propiedad para mover el botón más arriba o más abajo */
+    left: 17%; /* Ajusta esta propiedad para centrar el botón dentro del sobre */
+    transform: translateX(-50%); /* Esto centra el botón respecto a su posición left */
+    z-index: 20; /* Debe ser mayor que el del sobre */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #b32428;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #b32428, #ff0000, #b32428, #ff0000, #b32428); /* Una mezcla de rojo y blanco */
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #fff;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFFAFA; /* Blanco nieve */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+.heart-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 20px;
+  left: 145px;
+  color: var(--red-md);
+  font-size: 60px;
+  z-index: 1000;
+}
+.heart-btn:hover {
+  color: var(--purple-dk);
+}
+.heart-btn-text {
+  position: absolute;
+  font-size: 12px;
+  letter-spacing: .5px;
+  color: var(--neutral-lt);
+  z-index: 1000;
+}
+  
+/* ESTILOS DE CAJA DE LUZ */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparente */
+  overflow: auto;
+}
+
+.lightbox-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ajusta según sea necesario */
+}
+
+.close-lightbox {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-lightbox:hover,
+.close-lightbox:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh); }
+  }
+  
+  .snowflake {
+    position: fixed;
+    top: -10px;
+    z-index: 9999;
+    opacity: 0.8;
+    color: #add8e6;
+    animation-name: fall;
+    animation-timing-function: linear;
+  }
+  
+#miAudio {
+    display: none;
+}  
+
+#controlVolumen {
+    position: fixed; /* Fija el control deslizante en una posición respecto a la ventana del navegador */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta la posición exacta para centrar */
+    z-index: 900; /* Asegura que esté sobre otros elementos */
+
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px; /* Ancho del control deslizante */
+    height: 15px; /* Altura del control deslizante */
+    background: #ddd; /* Color de fondo */
+    outline: none; /* Remueve el borde al hacer foco */
+    opacity: 0.7; /* Transparencia */
+    -webkit-transition: .2s; /* Transición suave */
+    transition: opacity .2s;
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+#controlVolumen:hover {
+    opacity: 1; /* Opacidad total al pasar el ratón por encima */
+}
+
+/* Estilos para el pulgar (la parte que se arrastra) del control deslizante */
+#controlVolumen::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px; /* Ancho del pulgar */
+    height: 25px; /* Altura del pulgar */
+    background: #b32428; /* Color del pulgar */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 50%; /* Hace el pulgar circular */
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); /* Sombra sutil alrededor del pulgar */
+}
+
+#controlVolumen::-moz-range-thumb {
+    width: 25px; /* Ancho del pulgar */
+    height: 25px; /* Altura del pulgar */
+    background: #b32428; /* Color del pulgar */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    border-radius: 50%; /* Hace el pulgar circular */
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); /* Sombra sutil alrededor del pulgar */
+}
+
+.caja-de-luz {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+  }
+  
+  .cerrar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .contenido-caja-de-luz {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+/* Resto del CSS... */
