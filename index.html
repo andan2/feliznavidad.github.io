@@ -26,6 +26,12 @@
           <polygon class="outer-polygon" points="5,150 345,150 175,0"></polygon>
         </svg>
       </div>
+      <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" id="toggle-audio">
+            <span class="slider round"></span>
+        </label>
+      </div>
       <div class="envelope-base"></div>
 
       <!-- Contenedor de la caja de luz para la carta -->
@@ -63,14 +69,9 @@
           </div>          
         </div>
       </div>
-      <audio id="miAudio" loop preload="auto">
+      <audio autoplay loop id="miAudio">
         <source src="./Audios/navidad.MP3" type="audio/mpeg">
       </audio>
-      <input type="range" id="controlVolumen" min="0" max="1" step="0.01" value="0">
-      <label class="switch">
-        <input type="checkbox" id="audioToggle">
-        <span class="slider"></span>
-      </label>      
     </div>
   </article>
   <script src="./main.js"></script>

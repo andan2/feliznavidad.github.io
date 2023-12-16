@@ -21,27 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Close lightbox button not found");
     }
 
-    // Insertar el nuevo código aquí
-        var audioToggleSwitch = document.getElementById('audioToggle');
-        if (audioToggleSwitch) {
-            audioToggleSwitch.addEventListener('change', function() {
-                var audio = document.getElementById('miAudio');
-                if (this.checked) {
-                    audio.play();
-                } else {
-                    audio.pause();
-                }
-            });
-        }
-    
-        var controlVolumen = document.getElementById('controlVolumen');
-        if (controlVolumen) {
-            controlVolumen.addEventListener('input', function() {
-                var audio = document.getElementById('miAudio');
-                audio.volume = this.value;
-            });
-        }
-
 });
 
 document.querySelector('.glow-on-hover').addEventListener('click', function() {
@@ -78,29 +57,22 @@ document.getElementById('miEnlace').addEventListener('click', function(event){
     document.getElementById('miCajaDeLuz').style.display = 'none';
   }
 
-  window.addEventListener('DOMContentLoaded', (event) => {
-    var audio = document.getElementById('miAudio');
-    var controlVolumen = document.getElementById('controlVolumen');
+  window.onload = () => {
+    // Obtén el interruptor y el elemento de audio
+    const audioControl = document.getElementById('toggle-audio');
+    const audio = document.getElementById('miAudio');
 
-    // Ajusta el volumen inicial del audio
-    audio.volume = controlVolumen.value;
+    // Asegúrate de que el audio no esté sonando al cargar la página
+    audio.pause();
+    audioControl.checked = false;
 
-    // Evento para manejar cambios en el control de volumen
-    controlVolumen.addEventListener('change', function() {
-        audio.volume = this.value;
+    // Añade un evento 'change' al interruptor
+    audioControl.addEventListener('change', function() {
+        // Verifica si el interruptor está activado
+        if (this.checked) {
+            audio.play(); // Reproduce el audio si el interruptor está activado
+        } else {
+            audio.pause(); // Pausa el audio si el interruptor está desactivado
+        }
     });
-});
-
-// playaudio.js
-function playAudioOnInteraction() {
-    var audio = document.getElementById('miAudio');
-    audio.play().catch(function(error) {
-        console.error("La reproducción de audio falló:", error);
-    });
-    document.removeEventListener('click', playAudioOnInteraction);
-    document.removeEventListener('touchstart', playAudioOnInteraction);
-}
-
-document.addEventListener('click', playAudioOnInteraction);
-document.addEventListener('touchstart', playAudioOnInteraction);
-
+};

@@ -266,51 +266,6 @@ article {
     display: none;
 }  
 
-#controlVolumen {
-    position: fixed; /* Fija el control deslizante en una posición respecto a la ventana del navegador */
-    top: 50%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta la posición exacta para centrar */
-    z-index: 900; /* Asegura que esté sobre otros elementos */
-
-    -webkit-appearance: none;
-    appearance: none;
-    width: 200px; /* Ancho del control deslizante */
-    height: 15px; /* Altura del control deslizante */
-    background: #ddd; /* Color de fondo */
-    outline: none; /* Remueve el borde al hacer foco */
-    opacity: 0.7; /* Transparencia */
-    -webkit-transition: .2s; /* Transición suave */
-    transition: opacity .2s;
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
-#controlVolumen:hover {
-    opacity: 1; /* Opacidad total al pasar el ratón por encima */
-}
-
-/* Estilos para el pulgar (la parte que se arrastra) del control deslizante */
-#controlVolumen::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px; /* Ancho del pulgar */
-    height: 25px; /* Altura del pulgar */
-    background: #b32428; /* Color del pulgar */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    border-radius: 50%; /* Hace el pulgar circular */
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); /* Sombra sutil alrededor del pulgar */
-}
-
-#controlVolumen::-moz-range-thumb {
-    width: 25px; /* Ancho del pulgar */
-    height: 25px; /* Altura del pulgar */
-    background: #b32428; /* Color del pulgar */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    border-radius: 50%; /* Hace el pulgar circular */
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); /* Sombra sutil alrededor del pulgar */
-}
-
 .caja-de-luz {
     display: none;
     position: fixed;
@@ -342,23 +297,23 @@ article {
     max-width: 700px;
   }
   
-/* interruptor */
-/* Estilo general del interruptor */
+/* Estilo base para el interruptor */
 .switch {
   position: relative;
   display: inline-block;
-  width: 90px; /* Ancho del interruptor */
-  height: 50px; /* Altura del interruptor */
-  z-index: 900; /* Asegurar que el interruptor esté por encima de otros elementos */
+  width: 40px; /* Ancho del interruptor reducido */
+  height: 22px; /* Altura del interruptor reducida */
+  margin: 0; /* Asegúrate de que no hay margen por defecto */
 }
 
-/* Estilo del deslizador del interruptor */
-.switch input { 
-  opacity: 0; /* Ocultar el input real */
+/* Oculta el input predeterminado */
+.switch input {
+  opacity: 0;
   width: 0;
   height: 0;
 }
 
+/* Estilo para la pista del interruptor */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -366,78 +321,71 @@ article {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc; /* Fondo del interruptor */
+  background-color: #ccc;
   transition: .4s;
-  border-radius: 30px; /* Bordes redondeados para el fondo */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para dar efecto 3D */
+  border-radius: 22px;
 }
 
+/* Estilo para el círculo que se mueve dentro del interruptor */
 .slider:before {
   position: absolute;
   content: "";
-  height: 40px; /* Altura del deslizador */
-  width: 40px; /* Ancho del deslizador */
-  left: 5px; /* Posición inicial del deslizador */
-  bottom: 5px;
-  background-color: white; /* Color del deslizador */
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
   transition: .4s;
-  border-radius: 50%; /* Forma circular para el deslizador */
-  box-shadow: 0 4px 5px rgba(0,0,0,0.3); /* Sombra para dar efecto 3D */
+  border-radius: 50%;
 }
 
-/* Estilo cuando el interruptor está activo (en "ON") */
+/* Color del interruptor cuando está activado */
 input:checked + .slider {
-  background-color: #2196F3; /* Cambiar a azul cuando está activo */
+  background-color: #2196F3;
 }
 
-/* Mover el deslizador a la derecha cuando está activo */
+/* Mover el círculo al otro lado cuando está activado */
 input:checked + .slider:before {
-  transform: translateX(40px);
+  transform: translateX(18px);
 }
 
-/*ocultar interruptor y deslizante */
-
-/* Reglas de estilo base (móvil primero) */
-
-/* Por defecto, ocultar el interruptor en todos los dispositivos */
-.switch {
-  display: none;
+/* Estilo opcional para hacer el slider más redondeado */
+.slider.round {
+  border-radius: 22px;
 }
 
-/* Por defecto, mostrar el control deslizante en todos los dispositivos */
-#controlVolumen {
-  display: block;
+.slider.round:before {
+  border-radius: 50%;
 }
 
-/* Reglas de estilo para dispositivos de escritorio */
-@media screen and (min-width: 769px) {
-  /* Ocultar el interruptor en escritorio */
-  .switch {
+/* Posición por defecto del interruptor */
+.switch-container {
+  position: absolute; /* Cambiar a posición absoluta */
+  bottom: 50%; /* Ubicar el contenedor en la parte inferior del elemento padre */
+  margin-bottom: 20px; /* Espacio adicional de 20px por encima */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .switch-container {
+    position: absolute; /* Mantener posición absoluta */
+    bottom: 50%; /* Igual que en el estilo principal */
+    margin-bottom: 20px; /* Espacio de 20px por encima */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%);
+    z-index: 900;
+  }
+}
+
+body {
+    overflow: visible; /* Asegúrate de que no haya un overflow oculto */
+}
+
+#miAudio {
     display: none;
-  }
-
-  /* Mostrar el control deslizante en escritorio */
-  #controlVolumen {
-    display: block;
-  }
-}
-
-/* Reglas de estilo para dispositivos móviles */
-@media screen and (max-width: 768px) {
-  .switch {
-    display: block; /* Cambiado a block para permitir el centrado */
-    margin: 0 auto; /* Centrar en el contenedor */
-  }
-
-  /* Asegúrate de que la etiqueta que contiene el interruptor también esté centrada si es necesario */
-  .switch-container { /* Si tu interruptor está dentro de un contenedor */
-    text-align: center;
-  }
-
-  /* Ocultar el control deslizante en móviles */
-  #controlVolumen {
-    display: none;
-  }
 }
 
 /* Resto del CSS... */
