@@ -1361,8 +1361,89 @@ body {
 
 @media (max-width: 768px) {
     #miBoton {
-        top: 200px; /* o cualquier valor que prefieras */
+        top: 100px; /* o cualquier valor que prefieras */
     }
+}
+
+/* Estilo base para el interruptor */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px; /* Ancho del interruptor reducido */
+  height: 22px; /* Altura del interruptor reducida */
+  margin: 0; /* Asegúrate de que no hay margen por defecto */
+}
+
+/* Oculta el input predeterminado */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Estilo para la pista del interruptor */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 22px;
+}
+
+/* Estilo para el círculo que se mueve dentro del interruptor */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/* Color del interruptor cuando está activado */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+/* Mover el círculo al otro lado cuando está activado */
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* Estilo opcional para hacer el slider más redondeado */
+.slider.round {
+  border-radius: 22px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Posición por defecto del interruptor */
+.switch-container {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .switch-container {
+    top: 40px; /* Ajusta la parte superior automática para que no afecte */
+    bottom: 20px; /* Espacio desde el fondo de la pantalla */
+    left: 50%; /* Ajusta la izquierda automática para que no afecte */
+    transform: translateX(-50%);
+    z-index: 10000;
+  }
 }
 
 body {

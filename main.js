@@ -21,6 +21,27 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Close lightbox button not found");
     }
 
+    // Insertar el nuevo código aquí
+        var audioToggleSwitch = document.getElementById('audioToggle');
+        if (audioToggleSwitch) {
+            audioToggleSwitch.addEventListener('change', function() {
+                var audio = document.getElementById('miAudio');
+                if (this.checked) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            });
+        }
+    
+        var controlVolumen = document.getElementById('controlVolumen');
+        if (controlVolumen) {
+            controlVolumen.addEventListener('input', function() {
+                var audio = document.getElementById('miAudio');
+                audio.volume = this.value;
+            });
+        }
+
 });
 
 document.querySelector('.glow-on-hover').addEventListener('click', function() {
@@ -34,7 +55,7 @@ function createSnowflake() {
     snowFlake.style.left = Math.random() * window.innerWidth + 'px';
     snowFlake.style.animationDuration = Math.random() * 5 + 5 + 's'; // Duración de la caída
     snowFlake.style.opacity = Math.random();
-    snowFlake.style.fontSize = Math.random() * 5 + 5 + 'px'; // Tamaño más pequeño
+    snowFlake.style.fontSize = Math.random() * 4 + 4 + 'px'; // Tamaño más pequeño
 
     snowFlake.innerText = '❄'; // Carácter de copo de nieve
     document.body.appendChild(snowFlake);
@@ -47,19 +68,6 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 100); // Crear un nuevo copo de nieve cada 100 ms
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    var audio = document.getElementById('miAudio');
-    var controlVolumen = document.getElementById('controlVolumen');
-
-    // Ajusta el volumen inicial del audio
-    audio.volume = controlVolumen.value;
-
-    // Evento para manejar cambios en el control de volumen
-    controlVolumen.addEventListener('input', function() {
-        audio.volume = this.value;
-    });
-});
-
 document.getElementById('miEnlace').addEventListener('click', function(event){
     event.preventDefault();
     document.getElementById('imagenCajaDeLuz').src = this.href;
@@ -69,6 +77,19 @@ document.getElementById('miEnlace').addEventListener('click', function(event){
   function cerrarCajaDeLuz() {
     document.getElementById('miCajaDeLuz').style.display = 'none';
   }
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    var audio = document.getElementById('miAudio');
+    var controlVolumen = document.getElementById('controlVolumen');
+
+    // Ajusta el volumen inicial del audio
+    audio.volume = controlVolumen.value;
+
+    // Evento para manejar cambios en el control de volumen
+    controlVolumen.addEventListener('change', function() {
+        audio.volume = this.value;
+    });
+});
 
 // playaudio.js
 function playAudioOnInteraction() {

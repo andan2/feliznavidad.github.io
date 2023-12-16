@@ -342,4 +342,102 @@ article {
     max-width: 700px;
   }
   
+/* interruptor */
+/* Estilo general del interruptor */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 90px; /* Ancho del interruptor */
+  height: 50px; /* Altura del interruptor */
+  z-index: 900; /* Asegurar que el interruptor esté por encima de otros elementos */
+}
+
+/* Estilo del deslizador del interruptor */
+.switch input { 
+  opacity: 0; /* Ocultar el input real */
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Fondo del interruptor */
+  transition: .4s;
+  border-radius: 30px; /* Bordes redondeados para el fondo */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para dar efecto 3D */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 40px; /* Altura del deslizador */
+  width: 40px; /* Ancho del deslizador */
+  left: 5px; /* Posición inicial del deslizador */
+  bottom: 5px;
+  background-color: white; /* Color del deslizador */
+  transition: .4s;
+  border-radius: 50%; /* Forma circular para el deslizador */
+  box-shadow: 0 4px 5px rgba(0,0,0,0.3); /* Sombra para dar efecto 3D */
+}
+
+/* Estilo cuando el interruptor está activo (en "ON") */
+input:checked + .slider {
+  background-color: #2196F3; /* Cambiar a azul cuando está activo */
+}
+
+/* Mover el deslizador a la derecha cuando está activo */
+input:checked + .slider:before {
+  transform: translateX(40px);
+}
+
+/*ocultar interruptor y deslizante */
+
+/* Reglas de estilo base (móvil primero) */
+
+/* Por defecto, ocultar el interruptor en todos los dispositivos */
+.switch {
+  display: none;
+}
+
+/* Por defecto, mostrar el control deslizante en todos los dispositivos */
+#controlVolumen {
+  display: block;
+}
+
+/* Reglas de estilo para dispositivos de escritorio */
+@media screen and (min-width: 769px) {
+  /* Ocultar el interruptor en escritorio */
+  .switch {
+    display: none;
+  }
+
+  /* Mostrar el control deslizante en escritorio */
+  #controlVolumen {
+    display: block;
+  }
+}
+
+/* Reglas de estilo para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .switch {
+    display: block; /* Cambiado a block para permitir el centrado */
+    margin: 0 auto; /* Centrar en el contenedor */
+  }
+
+  /* Asegúrate de que la etiqueta que contiene el interruptor también esté centrada si es necesario */
+  .switch-container { /* Si tu interruptor está dentro de un contenedor */
+    text-align: center;
+  }
+
+  /* Ocultar el control deslizante en móviles */
+  #controlVolumen {
+    display: none;
+  }
+}
+
 /* Resto del CSS... */

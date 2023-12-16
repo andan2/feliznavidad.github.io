@@ -9,9 +9,17 @@
     <title>Flores 😊</title>
 </head>
 <body class="container">
+  <div>
     <a href="./index.html">
-        <button id="miBoton">Pincha aquí 😊</button>
-    </a>
+        <button id="miBoton">Al acabar pincha aquí 😊</button>
+    </a> 
+  </div>
+  <div class="switch-container">
+    <label class="switch">
+        <input type="checkbox" id="toggle-audio">
+        <span class="slider round"></span>
+    </label>
+  </div>
     <div class="night"></div>
     <div class="flowers">
       <div class="flower flower--1">
@@ -310,7 +318,7 @@
       </div>
     </div>
     <audio autoplay loop id="miAudio">
-        <source src="./Audios/shrek.MP3" type="audio/mpeg">
+        <source src="./Audios/shrekflores.MP3" type="audio/mpeg">
     </audio>    
     <script src="./script.js"></script>
   </body>
