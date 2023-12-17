@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feliz Navidad Maria!</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mountains+of+Christmas" />
   <link rel="stylesheet" href="./main.css">
 </head>
 <body>
   <article>
+    <div class="kerstImage">
+      <img class="imagesanta" src="http://www.animatedimages.org/data/media/359/animated-santa-claus-image-0420.gif">
+    </div>
     <div class="envelope-container">
       <div class="message message-1" id="message-1">
-        <h1>Feliz Navidad 🎅</h1>
-        <p>Desliza para escuchar 👇. ¡Ah, y tienes una carta por leer 🥳!</p>
+        <h1 class="tituloprincipal">Feliz Navidad 🎅</h1>
+        <p class="letrablanca">Desliza para escuchar 👇 ¡Ah, y tienes una carta por leer 🥳!</p>
       </div>
-      <button class="glow-on-hover" type="button" onclick="window.location.href='./flores.html';">Flores 🌸</button>
+      <button class="button" type="button" onclick="window.location.href='./flores.html';">
+        Flores 🌸
+        <img class="button-hat" src="https://assets.codepen.io/4175254/santa-hat-test-9.png" alt="">
+      </button>
       <button class="heart-btn" id="heart-btn" onclick="toggleEnvelope()">&#10084;
         <span class="heart-btn-text">Abrir</span>
       </button>
@@ -55,7 +62,7 @@
               <li>Ninguna: 💀</li>
           </ul>
       
-          <p>Supongo que contestarás al mensaje, pero en caso de que no lo hagas, espero que te haya gustado esto y que te vaya todo muy bien 🍀.</p>
+          <p>Supongo que contestarás al mensaje, pero en caso de que no lo hagas, espero que te haya gustado esto y que te vaya todo muy bien 🍀 y algún dia nos podamos volver a encontrar.</p>
       
           <p>Se despide,</p>
       
@@ -70,9 +77,10 @@
         </div>
       </div>
       <audio autoplay loop id="miAudio">
-        <source src="./Audios/navidad.MP3" type="audio/mpeg">
+        <source src="./Audios/accidentallyinlove.MP3" type="audio/mpeg">
       </audio>
     </div>
+    <canvas class="canvas"></canvas>
   </article>
   <script src="./main.js"></script>
 </body>

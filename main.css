@@ -8,7 +8,7 @@
 }
 :root {
     /* Colores actualizados para un tema nevado */
-    --red-dk: #8B0000; /* Rojo más oscuro, como bayas en la nieve */
+    --red-dk: #b32428; /* Rojo más oscuro, como bayas en la nieve */
     --red-md: #b32428; /* Rojo más claro, como luces navideñas */
     --pink-dk: #FFC0CB; /* Rosa suave */
     --pink-lt: #FFD1DC; /* Rosa muy claro */
@@ -27,20 +27,42 @@
 
 /* MAIN STYLES */
 body {
-    background: linear-gradient(to bottom, #f0f8ff 0%, #ffffff 100%);
-    font-family: var(--font-sans);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f0f8ff 0%, #ffffff 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
   
 p {
   font-size: 20px;
   margin: 20px 0;
 }
-h1, h2 {
-  font-family: var(--font-display);
-  font-size: 36px;
-  color: var(--red-dk);
-  text-shadow: 1px 2px 2px white;
+
+.letrablanca {
+  font-family: 'Mountains of Christmas';
+  font-size: 22px;
+  margin: 20px 0;
+  color: #333;
 }
+
+h1, h2 {
+  font-family: 'Mountains of Christmas';
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--red-dk);
+}
+.tituloprincipal {
+  font-family: 'Mountains of Christmas';
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--red-dk);
+  text-shadow: 0px 0px 3px white, 0px 0px 7px white, 0px 0px 7px white,
+  0px 0px 20px white;
+}
+
 button {
   background: transparent;
   border: none;
@@ -125,72 +147,6 @@ article {
 
 /* BOTONES */
   
-.glow-on-hover {
-    width: 100px;
-    height: 35px;
-    border: none;
-    outline: none;
-    color: #000000;
-    background: #FF6347; /* Un rojo navideño más oscuro para el fondo */
-    cursor: pointer;
-    position: absolute; /* Posicionamiento absoluto respecto al sobre */
-    bottom: 15px; /* Ajusta esta propiedad para mover el botón más arriba o más abajo */
-    left: 17%; /* Ajusta esta propiedad para centrar el botón dentro del sobre */
-    transform: translateX(-50%); /* Esto centra el botón respecto a su posición left */
-    z-index: 20; /* Debe ser mayor que el del sobre */
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #b32428;
-}
-
-.glow-on-hover:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #b32428, #ff0000, #b32428, #ff0000, #b32428); /* Una mezcla de rojo y blanco */
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
-}
-
-.glow-on-hover:active {
-    color: #fff;
-}
-
-.glow-on-hover:active:after {
-    background: transparent;
-}
-
-.glow-on-hover:hover:before {
-    opacity: 1;
-}
-
-.glow-on-hover:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #FFFAFA; /* Blanco nieve */
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-}
-
-@keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
-}
-
-
-
 .heart-btn {
   position: absolute;
   display: flex;
@@ -252,15 +208,6 @@ article {
     to { transform: translateY(100vh); }
   }
   
-  .snowflake {
-    position: fixed;
-    top: -10px;
-    z-index: 9999;
-    opacity: 0.8;
-    color: #add8e6;
-    animation-name: fall;
-    animation-timing-function: linear;
-  }
   
 #miAudio {
     display: none;
@@ -341,7 +288,7 @@ article {
 
 /* Color del interruptor cuando está activado */
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #b32428;
 }
 
 /* Mover el círculo al otro lado cuando está activado */
@@ -361,7 +308,7 @@ input:checked + .slider:before {
 /* Posición por defecto del interruptor */
 .switch-container {
   position: absolute; /* Cambiar a posición absoluta */
-  bottom: 50%; /* Ubicar el contenedor en la parte inferior del elemento padre */
+  bottom: 45%; /* Ubicar el contenedor en la parte inferior del elemento padre */
   margin-bottom: 20px; /* Espacio adicional de 20px por encima */
   left: 50%; /* Centrar horizontalmente */
   transform: translateX(-50%);
@@ -372,7 +319,7 @@ input:checked + .slider:before {
 @media (max-width: 768px) {
   .switch-container {
     position: absolute; /* Mantener posición absoluta */
-    bottom: 50%; /* Igual que en el estilo principal */
+    bottom: 45%; /* Igual que en el estilo principal */
     margin-bottom: 20px; /* Espacio de 20px por encima */
     left: 50%; /* Centrar horizontalmente */
     transform: translateX(-50%);
@@ -387,5 +334,87 @@ body {
 #miAudio {
     display: none;
 }
+
+/* nieve */
+.canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* boton navidad */
+
+.button {
+  position: absolute;
+  bottom: 15px;
+  left: 17%;
+  transform: translateX(-50%); /* Esta transformación centra el botón */
+  z-index: 20;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 6px 12px;
+  min-width: 6em;
+  text-align: center;
+  color: #fff;
+  background-image: 
+    linear-gradient(to bottom, #f12828, #a00332, #9f0f31),
+    linear-gradient(to bottom, #ae0034, #6f094c);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: 
+    inset 0 1px rgb(255 255 255 / .25),
+    inset 0 -1px rgb(0 0 0 / .1),
+    0 2px 4px rgb(0 0 0 / .25);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.button:hover {
+  box-shadow: 0 4px 8px rgb(0 0 0 / .45);
+  transform: translateX(-50%) translateY(-2px); /* Combina translateX con translateY */
+  filter: brightness(1.1);
+}
+
+/* El estilo para .button-hat se mantiene igual */
+.button-hat {
+  position: absolute;
+  top: -15px;
+  left: -17px;
+  height: 44px;
+  filter: drop-shadow(0 2px 1px rgb(0 0 0 / .25));
+}
+
+/* imagen de santa en trineo */
+
+.kerstImage {
+  position: absolute;
+  top: 65px;
+  left: 300px;
+  width: 40%;
+}
+
+.imagesanta {
+  position: absolute; /* Posiciona absolutamente la imagen dentro de su contenedor */
+  top: 20%;
+  left: 80%;
+  width: 40%; /* Establece el ancho al 100% del contenedor */
+  height: auto; /* Ajusta automáticamente la altura para mantener la proporción de la imagen */
+}
+
+/* Media query para pantallas con un ancho máximo de 768px */
+@media (max-width: 768px) {
+  .kerstImage {
+    left: 150px; /* Ajusta la posición y el tamaño para pantallas más pequeñas */
+    top: 35px;
+    width: 60%; /* O cualquier otro valor que se vea bien en dispositivos móviles */
+  }
+
+  .imagesanta {
+    top: 10%; /* Ajusta la posición para pantallas más pequeñas */
+    left: 40%;
+    width: 60%; /* Aumenta el tamaño para que sea visible en pantallas más pequeñas */
+  }
+}
+
 
 /* Resto del CSS... */

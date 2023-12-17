@@ -1328,42 +1328,73 @@ body {
           animation-play-state: paused !important;
 }
 
-#miBoton {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10000;
+@import url('https://fonts.googleapis.com/css?family=Raleway:500');
 
-    /* Estilos Modernos */
-    padding: 10px 20px;
-    background-color: #007bff; /* Un color azul vibrante */
-    color: white;
-    border: none;
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase; /* Texto en mayúsculas para un aspecto más formal */
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves para efectos de hover y focus */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
+/* Colores */
+:root {
+  --green: #a2ccb6; /* Mantengo este color, parece armonizar bien */
+  --light-peach: #ffecd9; /* Mantengo este color para mantener la suavidad */
+  --peach: #f672b0; /* Ajustado para coincidir con el color de las flores */
+  --sand: #6bf0ff; /* Ajustado para coincidir con otro color de las flores */
+  --white: #fff; /* Mantengo el blanco para contrastes y texto */
+}
+
+#miBoton {
+  position: fixed;
+  top: 1rem; /* Reducido para un mejor ajuste */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+
+  padding: 0.5rem 1rem; /* Reducido para una mejor proporción */
+  background: linear-gradient(to right, var(--green) 0%, var(--sand) 50%, var(--peach) 100%);
+  background-size: 500%;
+  color: var(--white);
+  border: none;
+  border-radius: 40px; /* Redondeado, pero no demasiado exagerado */
+  font: 1rem 'Raleway', sans-serif; /* Tamaño de fuente reducido */
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 16rem; /* Ancho reducido */
+  height: 3rem; /* Altura reducida */
+  letter-spacing: 0.05em;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #miBoton:hover, #miBoton:focus {
-    background-color: #0056b3; /* Un tono más oscuro al pasar el cursor o seleccionar */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más grande para efecto elevado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation-name: gradient;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
-#miBoton:active {
-    background-color: #00408b; /* Un tono aún más oscuro al hacer clic */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Restablece la sombra a la normalidad */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 @media (max-width: 768px) {
-    #miBoton {
-        top: 100px; /* o cualquier valor que prefieras */
-    }
+  #miBoton {
+    top: 5rem; /* Posición ajustada para móviles */
+    width: 12rem; /* Ancho más pequeño para dispositivos móviles */
+    height: 2.5rem; /* Altura reducida para dispositivos móviles */
+    font-size: 0.8rem; /* Tamaño de fuente reducido para una mejor legibilidad */
+    padding: 0.5rem 1rem; /* Relleno ajustado para evitar que el texto se salga */
+  }
 }
+
+
+
 
 /* Estilo base para el interruptor */
 .switch {
@@ -1409,7 +1440,7 @@ body {
 
 /* Color del interruptor cuando está activado */
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #f672b0;
 }
 
 /* Mover el círculo al otro lado cuando está activado */

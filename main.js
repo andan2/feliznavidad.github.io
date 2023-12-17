@@ -23,29 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-document.querySelector('.glow-on-hover').addEventListener('click', function() {
+document.querySelector('.button').addEventListener('click', function() {
     window.location.href = './flores.html';
   });
-  
 
-function createSnowflake() {
-    const snowFlake = document.createElement('div');
-    snowFlake.classList.add('snowflake');
-    snowFlake.style.left = Math.random() * window.innerWidth + 'px';
-    snowFlake.style.animationDuration = Math.random() * 5 + 5 + 's'; // Duración de la caída
-    snowFlake.style.opacity = Math.random();
-    snowFlake.style.fontSize = Math.random() * 4 + 4 + 'px'; // Tamaño más pequeño
-
-    snowFlake.innerText = '❄'; // Carácter de copo de nieve
-    document.body.appendChild(snowFlake);
-
-    // Eliminar el copo de nieve después de que ha caído
-    setTimeout(() => {
-        snowFlake.remove();
-    }, snowFlake.style.animationDuration.replace('s', '') * 1000);
-}
-
-setInterval(createSnowflake, 100); // Crear un nuevo copo de nieve cada 100 ms
 
 document.getElementById('miEnlace').addEventListener('click', function(event){
     event.preventDefault();
@@ -76,3 +57,95 @@ document.getElementById('miEnlace').addEventListener('click', function(event){
         }
     });
 };
+
+// nieve //
+
+const canvas = document.querySelector('.canvas');
+const ctx = canvas.getContext('2d');
+
+const pixelRatio = window.devicePixelRatio || 1;
+
+const snowflakes = [];
+
+class Snowflake {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    
+    const maxSize = 3;
+    this.size = Math.random() * (maxSize - 1) + 1;
+    this.velocity = this.size * 0.35;
+    const opacity = this.size / maxSize;
+    this.fill = `rgb(255 255 255 / ${opacity})`;
+    
+    this.windSpeed = (Math.random() - 0.5) * 0.1;
+    this.windAngle = Math.random() * Math.PI * 2;
+  }
+  isOutsideCanvas() {
+    return this.y > canvas.height + this.size;
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = -this.size;
+  }
+  update() {
+    this.windAngle += this.windSpeed;
+    this.wind = Math.cos(this.windAngle) * 0.5;
+
+    this.x += this.wind;
+    this.y += this.velocity;
+
+    if (this.isOutsideCanvas()) {
+      this.reset();
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.fill;
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+const createSnowflakes = () => {
+  // Calcular la cantidad de copos de nieve basada en el tamaño de la pantalla
+  let calculatedCount = Math.floor(window.innerWidth * window.innerHeight / 700);
+
+  // Establecer un mínimo de copos de nieve para dispositivos pequeños
+  const minSnowflakes = 1500; // Puedes ajustar este número según tus necesidades
+
+  // Usar el mayor valor entre el calculado y el mínimo
+  snowflakeCount = Math.max(calculatedCount, minSnowflakes);
+  
+  for (let i = 0; i < snowflakeCount; i++) {  
+    snowflakes.push(new Snowflake());
+  }
+}
+
+const resizeCanvas = () => {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  canvas.width = width * pixelRatio;
+  canvas.height = height * pixelRatio;
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+  ctx.scale(pixelRatio, pixelRatio);
+  snowflakes.length = 0;
+  createSnowflakes();
+};
+
+window.addEventListener('resize', resizeCanvas);
+
+resizeCanvas();
+
+const render = () => {
+  requestAnimationFrame(render);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  snowflakes.forEach(snowflake => {
+    snowflake.update();
+    snowflake.draw();
+  });
+};
+
+render();
