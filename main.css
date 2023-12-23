@@ -159,7 +159,7 @@ article {
   z-index: 1000;
 }
 .heart-btn:hover {
-  color: var(--purple-dk);
+  color: rgba(0, 0, 0, 0.7);
 }
 .heart-btn-text {
   position: absolute;
@@ -416,5 +416,38 @@ body {
   }
 }
 
+/* botón del home */
+
+.home-button-container {
+  position: absolute;
+  top: 295px; /* Ajusta según tu layout */
+  right: 20px; /* Ajusta según tu layout */
+  z-index: 400; /* Asegúrate de que no quede detrás de otros elementos */
+}
+
+#home-button {
+  display: flex; /* Aplica Flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 40px; /* Ajusta el ancho a tu preferencia */
+  height: 40px; /* Ajusta la altura para mantener el botón proporcionado */
+  background-color: #ae0034; /* Fondo rojo */
+  border: none;
+  padding: 0; /* Elimina el padding para permitir el centrado exacto */
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+#home-button i {
+  color: white; /* Icono blanco */
+  font-size: 24px;
+  /* Asegúrate de que no haya margen extra que afecte el centrado */
+  margin: 0; /* Remueve cualquier margen predefinido */
+}
+
+#home-button:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo más opaco al pasar el ratón */
+}
 
 /* Resto del CSS... */
